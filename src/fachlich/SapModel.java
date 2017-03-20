@@ -5,6 +5,9 @@ import com.sap.mw.jco.JCO.Client;
 import com.sap.mw.jco.JCO.Function;
 import com.sap.mw.jco.JCO.ParameterList;
 import com.sap.mw.jco.JCO.Repository;
+import com.sap.mw.jco.JCO.Table;
+
+import fachlich.BapiFactory.BapiType;
 
 public class SapModel {
 	
@@ -30,12 +33,7 @@ public class SapModel {
 		System.out.println("Verbindung erfolgreich");
 		
 		this.setRepository(new Repository("ERPKingsRepository", this.getConnection()));
-	}
-	
-	private void getFunction(){
-		Function function = new Function("GetList");
-		ParameterList importParameter = new ParameterList();
-		this.getConnection().execute(function);
+		BapiFactory.setRepository(this.getRepository());
 	}
 	
 	public Client getConnection() {
@@ -52,5 +50,18 @@ public class SapModel {
 	
 	public void setRepository(Repository repository) {
 		this.repository = repository;
+	}
+	
+	public void testFunction(){
+		Function function = BapiFactory.getFunction(BapiType.LISTE);
+		function.getImportParameterList();
+		Table matnr = function.getImportParameterList().getTable("BAPIMATRAM");
+		matnr.setValue("I", "SIGN");
+		matnr.setValue("CP", "OPTION");
+		matnr.setValue("ERPKÖ*", "MATNR_LOW");
+		matnr.setValue("", "MATNR_HIGH");
+		this.getConnection().execute(function);
+		ParameterList exportParams = function.getExportParameterList();
+		int i = 0;
 	}
 }

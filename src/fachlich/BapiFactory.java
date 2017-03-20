@@ -2,6 +2,7 @@ package fachlich;
 
 import java.util.HashMap;
 
+import com.sap.mw.jco.JCO.Function;
 import com.sap.mw.jco.JCO.Repository;
 
 public class BapiFactory {
@@ -9,30 +10,30 @@ public class BapiFactory {
 		VERFUEGBARKEIT, MATERIALBEDARFSPLANUNG, LISTE
 	}
 	
-	private Repository repository;
+	private static Repository repository;
 	
 	private static HashMap<BapiType, String> nameMappings;
-	{
-		nameMappings = new HashMap<>();
-		nameMappings.put(BapiType.VERFUEGBARKEIT, "BAPI_MATERIAL_AVAILABILITY");
-		nameMappings.put(BapiType.MATERIALBEDARFSPLANUNG, "BAPI_MATERIAL_PLANNING");
-		nameMappings.put(BapiType.LISTE, "BAPI_MATERIAL_GETLIST");
-	}
 	private static HashMap<BapiType, String> getMappings(){
+		if(nameMappings == null){
+			nameMappings = new HashMap<>();
+			nameMappings.put(BapiType.VERFUEGBARKEIT, "BAPI_MATERIAL_AVAILABILITY");
+			nameMappings.put(BapiType.MATERIALBEDARFSPLANUNG, "BAPI_MATERIAL_PLANNING");
+			nameMappings.put(BapiType.LISTE, "BAPI_MATERIAL_GETLIST");
+		}
 		return nameMappings;
 	}
 	
 	public BapiFactory(Repository repository){
 		super();
-		this.setRepository(repository);
+		setRepository(repository);
 	}
 	
-	public Repository getRepository() {
+	public static Repository getRepository() {
 		return repository;
 	}
 	
-	public void setRepository(Repository repository) {
-		this.repository = repository;
+	public static void setRepository(Repository repository) {
+		BapiFactory.repository = repository;
 	}
 	
 	private static String getFunctionName(BapiType type){
@@ -41,5 +42,9 @@ public class BapiFactory {
 			throw new IllegalStateException("BapiType ohne Funktionsäquivalent (" + BapiFactory.class.getSimpleName() + ")");
 		}
 		return result;
+	}
+	public static Function getFunction(BapiType type){
+		Function function = getRepository().getFunctionTemplate(getFunctionName(type)).getFunction();
+		return function;
 	}
 }
