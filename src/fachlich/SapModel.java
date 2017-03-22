@@ -16,7 +16,6 @@ public class SapModel {
 	private static final String SYSTEM_NUMBER = "28";
 	
 	private Client connection;
-	private Repository repository;
 	
 	public SapModel(String mandant, String user, String password) {
 		super();
@@ -32,8 +31,7 @@ public class SapModel {
 		
 		System.out.println("Verbindung erfolgreich");
 		
-		this.setRepository(new Repository("ERPKingsRepository", this.getConnection()));
-		BapiFactory.setRepository(this.getRepository());
+		BapiFactory.setRepository(new Repository("ERPKingsRepository", this.getConnection()));
 	}
 	
 	public Client getConnection() {
@@ -44,24 +42,24 @@ public class SapModel {
 		this.connection = connection;
 	}
 	
-	public Repository getRepository() {
-		return repository;
-	}
-	
-	public void setRepository(Repository repository) {
-		this.repository = repository;
-	}
-	
 	public void testFunction(){
-		Function function = BapiFactory.getFunction(BapiType.LISTE);
-		function.getImportParameterList();
-		Table matnr = function.getImportParameterList().getTable("BAPIMATRAM");
-		matnr.setValue("I", "SIGN");
-		matnr.setValue("CP", "OPTION");
-		matnr.setValue("ERPKÖ*", "MATNR_LOW");
-		matnr.setValue("", "MATNR_HIGH");
+		Function function = BapiFactory.getFunction(BapiType.GETLIST);
+		ParameterList params = function.getTableParameterList();
+		Table matnrSelection = params.getTable("MATNRSELECTION");
+		matnrSelection.appendRow();
+		matnrSelection.setValue("I", "SIGN");
+		matnrSelection.setValue("CP", "OPTION");
+		matnrSelection.setValue("ERPKÖ*", "MATNR_LOW");
+		matnrSelection.setValue("", "MATNR_HIGH");
 		this.getConnection().execute(function);
-		ParameterList exportParams = function.getExportParameterList();
-		int i = 0;
+		Table export = params.getTable("MATNRLIST");
+		System.out.println("Anzahl Einträge:" + export.getFieldCount());
+		do{
+			for(int i = 0; i < export.getFieldCount(); i++){
+				System.out.println(export.getValue(i));
+			}
+		}while(export.nextRow());
 	}
+	
+	
 }
