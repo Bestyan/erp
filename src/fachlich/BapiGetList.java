@@ -7,5 +7,4 @@ public class BapiGetList extends Bapi{
 	public BapiGetList(IFunctionTemplate template) {
 		super(template);
 	}
-	
 }

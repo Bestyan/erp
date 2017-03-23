@@ -5,9 +5,6 @@ import com.sap.mw.jco.JCO.Client;
 import com.sap.mw.jco.JCO.Function;
 import com.sap.mw.jco.JCO.ParameterList;
 import com.sap.mw.jco.JCO.Repository;
-import com.sap.mw.jco.JCO.Table;
-
-import fachlich.BapiFactory.BapiType;
 
 public class SapModel {
 	
@@ -43,9 +40,12 @@ public class SapModel {
 	}
 	
 	public void testFunction(){
-		Function function = BapiFactory.getFunction(BapiType.GETLIST);
-		ParameterList params = function.getTableParameterList();
-		Table matnrSelection = params.getTable("MATNRSELECTION");
+		Function function = BapiFactory.getRepository().getFunctionTemplate("BAPI_MATERIAL_GET_DETAIL").getFunction();
+		ParameterList params = function.getImportParameterList();
+		for(int i = 0; i < params.getFieldCount(); i++){
+			System.out.println(params.getName(i));
+		}
+		/*Table matnrSelection = params.getTable("MATNRSELECTION");
 		matnrSelection.appendRow();
 		matnrSelection.setValue("I", "SIGN");
 		matnrSelection.setValue("CP", "OPTION");
@@ -58,7 +58,7 @@ public class SapModel {
 			for(int i = 0; i < export.getFieldCount(); i++){
 				System.out.println(export.getValue(i));
 			}
-		}while(export.nextRow());
+		}while(export.nextRow());*/
 	}
 	
 	

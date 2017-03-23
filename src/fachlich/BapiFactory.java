@@ -7,7 +7,7 @@ import com.sap.mw.jco.JCO.Repository;
 
 public class BapiFactory {
 	public static enum BapiType{
-		AVAILABILITY, MATERIAL_REQUIREMENTS_PLANNING, GETLIST
+		AVAILABILITY, GETDETAIL, GETLIST
 	}
 	
 	private static Repository repository;
@@ -44,20 +44,15 @@ public class BapiFactory {
 			 */
 			nameMappings.put(BapiType.AVAILABILITY, "BAPI_MATERIAL_AVAILABILITY");
 			/**
-			 * MATERIAL_REQUIREMENTS_PLANNING:
+			 * GETDETAIL:
 			 * Imports:
 			 * 	MATERIAL
 			 * 	MATERIAL_EVG
-			 * 	MRP_AREA
-			 * 	MRP_PLAN_PARAM
 			 * 	PLANT
-			 * 	PLAN_SCENARIO
-			 * 
-			 * Tables:
-			 * 	EXTENSIONOUT
-			 * 	MRP_LISTS
+			 * 	VALUATIONAREA
+			 * 	VALUATIONTYPE
 			 */
-			nameMappings.put(BapiType.MATERIAL_REQUIREMENTS_PLANNING, "BAPI_MATERIAL_PLANNING");
+			nameMappings.put(BapiType.GETDETAIL, "BAPI_MATERIAL_GET_DETAIL");
 			/**
 			 * GETLIST
 			 * Imports:
@@ -99,8 +94,8 @@ public class BapiFactory {
 				return new BapiAvailability(functionTemplate);
 			case GETLIST:
 				return new BapiGetList(functionTemplate);
-			case MATERIAL_REQUIREMENTS_PLANNING:
-				return new BapiMaterialRequirementsPlanning(functionTemplate);
+			case GETDETAIL:
+				return new BapiGetDetail(functionTemplate);
 			default:
 				throw new IllegalStateException("BapiType ohne Äquivalent");
 		}
