@@ -1,6 +1,7 @@
 package fachlich;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import com.sap.mw.jco.IFunctionTemplate;
 
@@ -11,7 +12,7 @@ public class BapiGetDetail extends Bapi {
 	}
 	
 	@Override
-	protected HashMap<String, ParameterType> getExportParameterTypes() {
+	protected Map<String, ParameterType> getExportParameterTypes() {
 		return new HashMap<>();
 	}
 	

@@ -2,6 +2,8 @@ package fachlich;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.sap.mw.jco.IFunctionTemplate;
 import com.sap.mw.jco.JCO.Client;
@@ -52,20 +54,20 @@ public abstract class Bapi {
 	 * 
 	 * @return
 	 */
-	public HashMap<String, Object> execute(HashMap<String, Object> params, Client connection){
+	public Map<String, Object> execute(Map<String, Object> params, Client connection){
 		Function function = this.buildFunction(params);
 		connection.execute(function);
 		return this.repackageExportParameters(function);
 	}
 	
-	protected HashMap<String, Object> repackageExportParameters(Function function) {
-		HashMap<String, Object> result = new HashMap<>();
+	protected Map<String, Object> repackageExportParameters(Function function) {
+		Map<String, Object> result = new HashMap<>();
 		
 		ParameterList tables = function.getTableParameterList();
 		ParameterList imports = function.getImportParameterList();
 		ParameterList exports = function.getExportParameterList();
 		
-		HashMap<String, ParameterType> exportTypes = this.getExportParameterTypes();
+		Map<String, ParameterType> exportTypes = this.getExportParameterTypes();
 		for(String key : exportTypes.keySet()){
 			ParameterType type = exportTypes.get(key);
 			switch(type){
@@ -73,9 +75,9 @@ public abstract class Bapi {
 					try{
 						Table table = tables.getTable(key);
 						if(table.getNumRows() > 0){
-							ArrayList<HashMap<String, String>> rows = new ArrayList<>();
+							List<Map<String, String>> rows = new ArrayList<>();
 							do{
-								HashMap<String, String> row = new HashMap<>();
+								Map<String, String> row = new HashMap<>();
 								for(int i = 0; i < table.getFieldCount(); i++){
 									String fieldName = table.getField(i).getName();
 									String fieldValue = (String) table.getValue(fieldName);
@@ -93,7 +95,7 @@ public abstract class Bapi {
 				case STRUCTURE:
 					try{
 						Structure structure = exports.getStructure(key);
-						HashMap<String, String> resultStructure = new HashMap<>();
+						Map<String, String> resultStructure = new HashMap<>();
 						for(int i = 0; i < structure.getFieldCount(); i++){
 							String fieldName = structure.getField(i).getName();
 							String fieldValue = (String) structure.getValue(fieldName);
@@ -103,7 +105,7 @@ public abstract class Bapi {
 					} catch(Exception structureNotFoundExport){
 						try{
 							Structure structure = imports.getStructure(key);
-							HashMap<String, String> resultStructure = new HashMap<>();
+							Map<String, String> resultStructure = new HashMap<>();
 							for(int i = 0; i < structure.getFieldCount(); i++){
 								String fieldName = structure.getField(i).getName();
 								String fieldValue = (String) structure.getValue(fieldName);
@@ -142,7 +144,7 @@ public abstract class Bapi {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	protected Function buildFunction(HashMap<String, Object> params){
+	protected Function buildFunction(Map<String, Object> params){
 		Function function = this.getFunctionTemplate().getFunction();
 		ParameterList tableParams = function.getTableParameterList();
 		ParameterList importParams = function.getImportParameterList();
@@ -150,11 +152,11 @@ public abstract class Bapi {
 		for(String paramKey : params.keySet()){
 			Object value = params.get(paramKey);
 			
-			if(value instanceof ArrayList){
+			if(value instanceof List){
 				Table table = tableParams.getTable(paramKey.toUpperCase());
-				ArrayList<HashMap<String, String>> tableContent = (ArrayList<HashMap<String, String>>) value;
+				List<Map<String, String>> tableContent = (List<Map<String, String>>) value;
 				
-				for(HashMap<String, String> row : tableContent){
+				for(Map<String, String> row : tableContent){
 					table.appendRow();
 					for(String column : row.keySet()){
 						String columnContent = row.get(column);
@@ -166,8 +168,8 @@ public abstract class Bapi {
 				
 				importParams.setValue((String) value, paramKey);
 				
-			} else if(value instanceof HashMap){
-				HashMap<String, String> structureContent = (HashMap<String, String>) value;
+			} else if(value instanceof Map){
+				Map<String, String> structureContent = (Map<String, String>) value;
 				
 				Structure structure = importParams.getStructure(paramKey);
 				for(String column : structureContent.keySet()){
@@ -180,5 +182,5 @@ public abstract class Bapi {
 		return function;
 	}
 	
-	protected abstract HashMap<String, ParameterType> getExportParameterTypes();
+	protected abstract Map<String, ParameterType> getExportParameterTypes();
 }
