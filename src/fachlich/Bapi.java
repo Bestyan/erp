@@ -85,18 +85,48 @@ public abstract class Bapi {
 							}while(table.nextRow());
 							result.put(key, rows);
 						}
+						break;
 					} catch(Exception tableNotFound){
-						//TODO
+						//do nothing, try structure in next case
+					}
+					//no break here!
+				case STRUCTURE:
+					try{
+						Structure structure = exports.getStructure(key);
+						HashMap<String, String> resultStructure = new HashMap<>();
+						for(int i = 0; i < structure.getFieldCount(); i++){
+							String fieldName = structure.getField(i).getName();
+							String fieldValue = (String) structure.getValue(fieldName);
+							resultStructure.put(fieldName, fieldValue);
+						}
+						result.put(key, resultStructure);
+					} catch(Exception structureNotFoundExport){
 						try{
-							Structure structure = exports.getStructure(key);
-						} catch(Exception structureNotFoundExport){
-							
+							Structure structure = imports.getStructure(key);
+							HashMap<String, String> resultStructure = new HashMap<>();
+							for(int i = 0; i < structure.getFieldCount(); i++){
+								String fieldName = structure.getField(i).getName();
+								String fieldValue = (String) structure.getValue(fieldName);
+								resultStructure.put(fieldName, fieldValue);
+							}
+							result.put(key, resultStructure);
+						} catch(Exception e){
+							e.printStackTrace();
 						}
 					}
 					break;
-				case STRUCTURE:
-					break;
 				case FIELD:
+					try{
+						Object value = exports.getValue(key);
+						result.put(key, value);
+					} catch(Exception fieldNotFoundExport){
+						try{
+							Object value = imports.getValue(key);
+							result.put(key, value);
+						} catch(Exception e){
+							e.printStackTrace();
+						}
+					}
 					break;
 				default:
 					throw new IllegalStateException("ParameterType not caught (" + Bapi.class.getSimpleName() + ".execute(..))");
@@ -106,6 +136,11 @@ public abstract class Bapi {
 		return result;
 	}
 	
+	/**
+	 * erzeugt ein Function-Objekt, bei dem die übergebenen Parameter gesetzt sind
+	 * @param params
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	protected Function buildFunction(HashMap<String, Object> params){
 		Function function = this.getFunctionTemplate().getFunction();

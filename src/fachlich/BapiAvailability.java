@@ -11,8 +11,8 @@ public class BapiAvailability extends Bapi {
 	}
 	
 	@Override
-	public HashMap<String, Object> execute(HashMap<String, Object> params) {
+	protected HashMap<String, ParameterType> getExportParameterTypes() {
+		// TODO Auto-generated method stub
 		return null;
 	}
-	
 }
