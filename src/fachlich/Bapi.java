@@ -87,6 +87,11 @@ public abstract class Bapi {
 								}
 								rows.add(row);
 							}while(table.nextRow());
+						} else{
+							//add a dummy row to have something to display
+							Map<String, String> row = new HashMap<>();
+							row.put("value", "empty table");
+							rows.add(row);
 						}
 						result.put(key, rows);
 						break;

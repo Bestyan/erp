@@ -1,50 +1,58 @@
 package gui_fx;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 @SuppressWarnings("unchecked")
 public class ResultController {
 	
-	public static Tab addNewTableTab(TabPane parent, String tableName, ResultController controller, ArrayList<Map<String, String>> rows){
-		try {
-			//load the Tab from fxml file
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/exportTab.fxml"));
-			Tab root = loader.load();
-			
-			//set Tab values
-			root.setId(tableName);
-			root.setText(tableName);
-			
-			//init Table
-			TableView<Map<String, String>> table = (TableView<Map<String, String>>) root.getContent().lookup("#table");
-			TableColumn<Map<String, String>, String> column = new TableColumn<>();
-			if(rows.isEmpty()){
-				table.getColumns().add(column);
-				ObservableList<Map<String, String>> items = FXCollections.observableArrayList();
-				Map<String, String> value = new HashMap<>();
-				value.put("value", "Tabelle ist leer");
-				items.add(value);
-				table.setItems(items);
-			} else{
-				//TODO
-			}
-			
-			return root;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 	
+	
+	/**
+	 * erzeugt ein neues Fenster, in dem alle Returnparameter wie im Bapi-Objekt angegeben ausgegeben werden
+	 * @param results
+	 */
+	public static void displayResults(Map<String, Object> results){
+		//init new Window and TabPane
+		Stage stage = new Stage();
+		TabPane root = new TabPane();
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		
+		//populate TabPane
+		List<String> keys = new ArrayList<>(results.keySet());
+		Tab fieldsTab = null;
+		Collections.sort(keys);
+		for(String key : keys){
+			Object value = results.get(key);
+			
+			if(value instanceof String){
+				
+				fieldsTab = ElementFactory.addField(root, fieldsTab, key, value);
+				
+			} else if(value instanceof Map){
+				
+				ElementFactory.addNewStructureTab(root, key, value);
+				
+			} else if(value instanceof List){
+				
+				ElementFactory.addNewTableTab(root, key, (List<Map<String, String>>) value);
+				
+			}
+		}
+		
+		//show Window
+		stage.setTitle("Retail Material");
+		stage.sizeToScene();
+		stage.show();
+		stage.setMinHeight(stage.getHeight());
+		stage.setMinWidth(stage.getWidth());
+	}
 }
