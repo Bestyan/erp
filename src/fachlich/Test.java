@@ -20,6 +20,6 @@ public class Test {
 		matnrSelection.add(row);
 		parameters.put("MATNRSELECTION", matnrSelection);
 		Map<String, Object> result = model.executeBapi(BapiType.GETLIST, parameters);
-		
+		int i = 0;
 	}
 }

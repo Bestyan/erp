@@ -32,6 +32,8 @@ public abstract class Bapi {
 		this.functionTemplate = functionTemplate;
 	}
 	
+	protected Map<String, ParameterType> exportParameterTypes;
+	
 	/**
 	 * @param params alle Function-Parameter
 	 * <ul>
@@ -74,8 +76,8 @@ public abstract class Bapi {
 				case TABLE:
 					try{
 						Table table = tables.getTable(key);
+						List<Map<String, String>> rows = new ArrayList<>();
 						if(table.getNumRows() > 0){
-							List<Map<String, String>> rows = new ArrayList<>();
 							do{
 								Map<String, String> row = new HashMap<>();
 								for(int i = 0; i < table.getFieldCount(); i++){
@@ -85,8 +87,8 @@ public abstract class Bapi {
 								}
 								rows.add(row);
 							}while(table.nextRow());
-							result.put(key, rows);
 						}
+						result.put(key, rows);
 						break;
 					} catch(Exception tableNotFound){
 						//do nothing, try structure in next case

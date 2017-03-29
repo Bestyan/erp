@@ -89,22 +89,6 @@ public class SapModel {
 		for(int i = 0; i < tables.getFieldCount(); i++){
 			System.out.println("\t" + tables.getName(i));
 		}
-		
-		
-		/*Table matnrSelection = params.getTable("MATNRSELECTION");
-		matnrSelection.appendRow();
-		matnrSelection.setValue("I", "SIGN");
-		matnrSelection.setValue("CP", "OPTION");
-		matnrSelection.setValue("ERPKÖ*", "MATNR_LOW");
-		matnrSelection.setValue("", "MATNR_HIGH");
-		this.getConnection().execute(function);
-		Table export = params.getTable("MATNRLIST");
-		System.out.println("Anzahl Einträge:" + export.getFieldCount());
-		do{
-			for(int i = 0; i < export.getFieldCount(); i++){
-				System.out.println(export.getValue(i));
-			}
-		}while(export.nextRow());*/
 	}
 	
 	
