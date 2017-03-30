@@ -9,7 +9,6 @@ import java.util.Map;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -69,14 +68,15 @@ public class ElementFactory {
 		try {
 			//load the Tab from fxml file
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/exportTab.fxml"));
+			loader.setRoot(parent);
 			GridPane root = loader.load();
 			parent.addRow(Util.getRowCount(parent), root);
 			
 			//set values
-			Label labelValue = (Label) root.lookup("#value");
-			Label labelField = (Label) root.lookup("#field");
-			labelValue.setText(value);
-			labelField.setText(name);
+			//			Label labelValue = (Label) root.lookup("#value");
+			//			Label labelField = (Label) root.lookup("#field");
+			//			labelValue.setText(value);
+			//			labelField.setText(name);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
