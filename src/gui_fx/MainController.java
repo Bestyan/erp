@@ -12,7 +12,9 @@ import javafx.stage.Stage;
 public class MainController {
 	@FXML
 	private Button button_availability;
+	@FXML
 	private Button button_getList;
+	@FXML
 	private Button button_getDetail;
 	
 	@FXML
