@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -25,10 +26,14 @@
       <Label contentDisplay="CENTER" layoutX="71.0" layoutY="148.0" prefHeight="27.0" prefWidth="87.0" text="Plant" />
       <Label contentDisplay="CENTER" layoutX="71.0" layoutY="193.0" prefHeight="27.0" prefWidth="87.0" text="ValuationArea" />
       <Label contentDisplay="CENTER" layoutX="71.0" layoutY="242.0" prefHeight="27.0" prefWidth="87.0" text="ValuationType" />
-      <TextField fx:id="textfieldGetDetail" layoutX="226.0" layoutY="107.0" />
+      <TextField fx:id="textfieldMaterial" layoutX="226.0" layoutY="107.0" />
       <TextField fx:id="textfieldPlant" layoutX="226.0" layoutY="149.0" />
       <TextField fx:id="textfieldValuationArea" layoutX="226.0" layoutY="194.0" />
       <TextField fx:id="textfieldValuationType" layoutX="226.0" layoutY="243.0" />
       <Label layoutX="1.0" layoutY="370.0" prefHeight="32.0" prefWidth="291.0" text="Bastian Schattenberg, Jan Schönbrunn, Jens Fischer" />
+      <CheckBox fx:id="checkbox_Material" layoutX="393.0" layoutY="111.0" mnemonicParsing="false" />
+      <CheckBox fx:id="checkbox_Plant" layoutX="393.0" layoutY="153.0" mnemonicParsing="false" />
+      <CheckBox fx:id="checkbox_ValuationType" layoutX="393.0" layoutY="247.0" mnemonicParsing="false" />
+      <CheckBox fx:id="checkbox_ValuationArea" layoutX="393.0" layoutY="198.0" mnemonicParsing="false" />
    </children>
 </AnchorPane>

@@ -7,6 +7,7 @@ import fachlich.BapiFactory.BapiType;
 import fachlich.SapModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
 public class GetDetailController {
@@ -22,6 +23,15 @@ public class GetDetailController {
 	
 	@FXML
 	private Button button_suchen;
+	
+	@FXML
+	private CheckBox checkbox_Material;
+	@FXML
+	private CheckBox checkbox_Plant;
+	@FXML
+	private CheckBox checkbox_ValuationArea;
+	@FXML
+	private CheckBox checkbox_ValuationType;
 	
 	@FXML
 	public void click_button_Suchen() {

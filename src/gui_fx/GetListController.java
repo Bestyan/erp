@@ -8,6 +8,7 @@ import fachlich.BapiFactory.BapiType;
 import fachlich.SapModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
 public class GetListController {
@@ -70,6 +71,21 @@ public class GetListController {
 	private TextField textfieldDistributionChannelSelection3;
 	@FXML
 	private TextField textfieldDistributionChannelSelection4;
+	
+	@FXML
+	private CheckBox checkbox_MatnrSelection;
+	@FXML
+	private CheckBox checkbox_MaterialShortDescSel;
+	@FXML
+	private CheckBox checkbox_ManufacturePartNumb;
+	@FXML
+	private CheckBox checkbox_PlantSelection;
+	@FXML
+	private CheckBox checkbox_StorageLocationSelection;
+	@FXML
+	private CheckBox checkbox_SalesOrganisationSelection;
+	@FXML
+	private CheckBox checkbox_distributionChannelSelection;
 	
 	@FXML
 	private Button button_suchen;
