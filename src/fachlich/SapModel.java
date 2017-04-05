@@ -1,5 +1,6 @@
 package fachlich;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.sap.mw.jco.JCO;
@@ -17,6 +18,14 @@ public class SapModel {
 	private static final String SYSTEM_NUMBER = "28";
 	
 	private Client connection;
+	
+	public static SapModel connect(){
+		return new SapModel("915", "GBI-0-18", "123456");
+	}
+	
+	public void disconnect(){
+		this.getConnection().disconnect();
+	}
 	
 	public SapModel(String mandant, String user, String password) {
 		super();
@@ -59,7 +68,11 @@ public class SapModel {
 	 * @return Exportparameter der BAPI, aufgebaut nach demselbem Schema wie parameters
 	 */
 	public Map<String, Object> executeBapi(BapiType bapi, Map<String, Object> parameters){
-		Map<String, Object> result = BapiFactory.getBapi(bapi).execute(parameters, this.getConnection());
+		Map<String, Object> result = new HashMap<>();
+		if(this.getConnection().isAlive()){
+			result = BapiFactory.getBapi(bapi).execute(parameters, this.getConnection());
+		}
+		this.disconnect();
 		return result;
 	}
 	

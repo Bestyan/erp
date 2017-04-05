@@ -186,7 +186,7 @@ public class GetListController {
 		distributionChannelSelection.add(distributionChannelSelectionRow);
 		resultDistributionChannelSelection.put("DISTRIBUTIONCHANNELSELECTION", distributionChannelSelection);
 		
-		SapModel model = new SapModel("915", "GBI-0-18", "123456");
+		SapModel model = SapModel.connect();
 		Map<String, Object> resultMapDistributionChannelSelection = model.executeBapi(BapiType.GETLIST, resultDistributionChannelSelection);
 		ResultController.displayResults(resultMapDistributionChannelSelection);
 		

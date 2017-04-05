@@ -38,7 +38,7 @@ public class GetDetailController {
 		//VALUATIONTYPE
 		inputs.put("VALUATIONTYPE", textfieldValuationType.getText());
 		
-		SapModel model = new SapModel("915", "GBI-0-18", "123456");
+		SapModel model = SapModel.connect();
 		Map<String, Object> resultGetDetail = model.executeBapi(BapiType.GETLIST, inputs);
 		ResultController.displayResults(resultGetDetail);
 	}

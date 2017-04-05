@@ -10,7 +10,7 @@ import fachlich.BapiFactory.BapiType;
 public class Test {
 	public static void main(String [] args)
 	{
-		SapModel model = new SapModel("915", "GBI-0-18", "123456");
+		SapModel model = SapModel.connect();
 		Map<String, Object> parameters = new HashMap<>();
 		List<Map<String, String>> matnrSelection = new ArrayList<>();
 		Map<String, String> row = new HashMap<>();
