@@ -8,6 +8,7 @@ import java.util.Map;
 import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
+import utils.Utils;
 
 @SuppressWarnings("unchecked")
 public class ResultController {
@@ -51,6 +52,6 @@ public class ResultController {
 		stage.setTitle("Retail Material");
 		stage.sizeToScene();
 		stage.show();
-		Util.sizeStage(stage);
+		Utils.sizeStage(stage);
 	}
 }

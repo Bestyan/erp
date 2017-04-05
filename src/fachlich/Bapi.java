@@ -1,8 +1,6 @@
 package fachlich;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +11,8 @@ import com.sap.mw.jco.JCO.Function;
 import com.sap.mw.jco.JCO.ParameterList;
 import com.sap.mw.jco.JCO.Structure;
 import com.sap.mw.jco.JCO.Table;
+
+import utils.Utils;
 
 public abstract class Bapi {
 	public static enum ParameterType{
@@ -84,7 +84,8 @@ public abstract class Bapi {
 								Map<String, String> row = new HashMap<>();
 								for(int i = 0; i < table.getFieldCount(); i++){
 									String fieldName = table.getField(i).getName();
-									String fieldValue = (String) table.getValue(fieldName);
+									Object valueObject = table.getValue(fieldName);
+									String fieldValue = Utils.getValue(valueObject);
 									row.put(fieldName, fieldValue);
 								}
 								rows.add(row);
@@ -107,15 +108,8 @@ public abstract class Bapi {
 						Map<String, String> resultStructure = new HashMap<>();
 						for(int i = 0; i < structure.getFieldCount(); i++){
 							String fieldName = structure.getField(i).getName();
-							String fieldValue = null;
 							Object valueObject = structure.getValue(fieldName);
-							if(valueObject instanceof String){
-								fieldValue = (String) valueObject;
-							} else if(valueObject instanceof Date){
-								fieldValue = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format((Date) valueObject);
-							} else{
-								fieldValue = valueObject.toString();
-							}
+							String fieldValue = Utils.getValue(valueObject);
 							resultStructure.put(fieldName, fieldValue);
 						}
 						result.put(key, resultStructure);
@@ -125,7 +119,8 @@ public abstract class Bapi {
 							Map<String, String> resultStructure = new HashMap<>();
 							for(int i = 0; i < structure.getFieldCount(); i++){
 								String fieldName = structure.getField(i).getName();
-								String fieldValue = (String) structure.getValue(fieldName);
+								Object valueObject = structure.getValue(fieldName);
+								String fieldValue = Utils.getValue(valueObject);
 								resultStructure.put(fieldName, fieldValue);
 							}
 							result.put(key, resultStructure);

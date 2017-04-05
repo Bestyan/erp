@@ -35,7 +35,7 @@ public class AvailabilityController {
 		inputs.put("STGE_LOC", textfieldStgeLoc.getText());
 		
 		SapModel model = new SapModel("915", "GBI-0-18", "123456");
-		Map<String, Object> resultAvailability = model.executeBapi(BapiType.GETLIST, inputs);
+		Map<String, Object> resultAvailability = model.executeBapi(BapiType.AVAILABILITY, inputs);
 		ResultController.displayResults(resultAvailability);
 	}
 }

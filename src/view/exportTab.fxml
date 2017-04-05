@@ -6,7 +6,7 @@
 
 <Tab fx:id="exportTab" text="Untitled Tab 1" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
          <content>
-            <ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" fitToHeight="true" fitToWidth="true">
                <content>
                   <StackPane fx:id="contentPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
                </content>

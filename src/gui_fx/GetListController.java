@@ -180,8 +180,8 @@ public class GetListController {
 		
 		distributionChannelSelectionRow.put("SIGN", textfieldDistributionChannelSelection1.getText());
 		distributionChannelSelectionRow.put("OPTION", textfieldDistributionChannelSelection2.getText());
-		distributionChannelSelectionRow.put("SALESORG_LOW", textfieldDistributionChannelSelection3.getText());
-		distributionChannelSelectionRow.put("SALESORG_HIGH", textfieldDistributionChannelSelection4.getText());
+		distributionChannelSelectionRow.put("DISTR_CHAN_LOW", textfieldDistributionChannelSelection3.getText());
+		distributionChannelSelectionRow.put("DISTR_CHAN_HIGH", textfieldDistributionChannelSelection4.getText());
 		
 		distributionChannelSelection.add(distributionChannelSelectionRow);
 		resultDistributionChannelSelection.put("DISTRIBUTIONCHANNELSELECTION", distributionChannelSelection);

@@ -1,4 +1,7 @@
-package gui_fx;
+package utils;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
@@ -6,7 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-public class Util {
+public class Utils {
 	public static int getRowCount(GridPane pane) {
 		int numRows = pane.getRowConstraints().size();
 		for (int i = 0; i < pane.getChildren().size(); i++) {
@@ -35,5 +38,17 @@ public class Util {
 		}
 		stage.setMaxHeight(screen.getMaxY());
 		stage.setMaxWidth(screen.getMaxX());
+	}
+	
+	public static String getValue(Object valueObject){
+		String fieldValue = null;
+		if(valueObject instanceof String){
+			fieldValue = (String) valueObject;
+		} else if(valueObject instanceof Date){
+			fieldValue = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format((Date) valueObject);
+		} else{
+			fieldValue = valueObject.toString();
+		}
+		return fieldValue;
 	}
 }

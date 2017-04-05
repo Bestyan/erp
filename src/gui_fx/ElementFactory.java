@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import utils.Utils;
 
 @SuppressWarnings("unchecked")
 public class ElementFactory {
@@ -45,7 +46,6 @@ public class ElementFactory {
 		try {
 			//init Table
 			TableView<Map<String, String>> table = new TableView<>();
-			table.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 			contentPane.getChildren().add(table);
 			
 			if(!rows.isEmpty()){
@@ -76,7 +76,7 @@ public class ElementFactory {
 		//set values
 		labelValue.setText(value);
 		labelField.setText(name);
-		parent.addRow(Util.getRowCount(parent), labelField, labelValue);
+		parent.addRow(Utils.getRowCount(parent), labelField, labelValue);
 	}
 	
 	public static void addNewStructureTab(TabPane root, String key, Object value) {

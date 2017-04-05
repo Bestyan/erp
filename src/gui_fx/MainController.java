@@ -5,12 +5,11 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MainController {
-
+	
 	@FXML
 	public void click_availability() {
 		try {
@@ -25,6 +24,7 @@ public class MainController {
 			primaryStage.show();
 			primaryStage.setMinHeight(primaryStage.getHeight());
 			primaryStage.setMinWidth(primaryStage.getWidth());
+			primaryStage.setResizable(false);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,6 +45,7 @@ public class MainController {
 			primaryStage.show();
 			primaryStage.setMinHeight(primaryStage.getHeight());
 			primaryStage.setMinWidth(primaryStage.getWidth());
+			primaryStage.setResizable(false);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,6 +66,7 @@ public class MainController {
 			primaryStage.show();
 			primaryStage.setMinHeight(primaryStage.getHeight());
 			primaryStage.setMinWidth(primaryStage.getWidth());
+			primaryStage.setResizable(false);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
