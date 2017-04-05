@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import javafx.scene.Scene;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 
@@ -28,14 +27,14 @@ public class ResultController {
 		
 		//populate TabPane
 		List<String> keys = new ArrayList<>(results.keySet());
-		Tab fieldsTab = null;
+		ExportTabController fieldController = null;
 		Collections.sort(keys);
 		for(String key : keys){
 			Object value = results.get(key);
 			
 			if(value instanceof String){
 				
-				fieldsTab = ElementFactory.addField(root, fieldsTab, key, value);
+				fieldController = ElementFactory.addField(root, fieldController, key, value);
 				
 			} else if(value instanceof Map){
 				
@@ -52,7 +51,6 @@ public class ResultController {
 		stage.setTitle("Retail Material");
 		stage.sizeToScene();
 		stage.show();
-		stage.setMinHeight(stage.getHeight());
-		stage.setMinWidth(stage.getWidth());
+		Util.sizeStage(stage);
 	}
 }

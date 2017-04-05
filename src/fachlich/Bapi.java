@@ -1,6 +1,8 @@
 package fachlich;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -105,7 +107,15 @@ public abstract class Bapi {
 						Map<String, String> resultStructure = new HashMap<>();
 						for(int i = 0; i < structure.getFieldCount(); i++){
 							String fieldName = structure.getField(i).getName();
-							String fieldValue = (String) structure.getValue(fieldName);
+							String fieldValue = null;
+							Object valueObject = structure.getValue(fieldName);
+							if(valueObject instanceof String){
+								fieldValue = (String) valueObject;
+							} else if(valueObject instanceof Date){
+								fieldValue = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format((Date) valueObject);
+							} else{
+								fieldValue = valueObject.toString();
+							}
 							resultStructure.put(fieldName, fieldValue);
 						}
 						result.put(key, resultStructure);
@@ -120,7 +130,7 @@ public abstract class Bapi {
 							}
 							result.put(key, resultStructure);
 						} catch(Exception e){
-							e.printStackTrace();
+							structureNotFoundExport.printStackTrace();
 						}
 					}
 					break;

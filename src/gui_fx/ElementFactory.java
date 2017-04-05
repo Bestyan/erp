@@ -9,6 +9,7 @@ import java.util.Map;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -18,29 +19,33 @@ import javafx.scene.layout.StackPane;
 
 @SuppressWarnings("unchecked")
 public class ElementFactory {
-	protected static Tab addNewTab(TabPane parent, String tabName){
-		Tab root = null;
+	protected static ExportTabController addNewTab(TabPane parent, String tabName){
+		ExportTabController controller = new ExportTabController();
 		try {
 			//load the Tab from fxml file
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/exportTab.fxml"));
-			root = loader.load();
+			loader.setController(controller);
+			Tab root = loader.load();
 			
 			//set Tab values
 			root.setId(tabName);
 			root.setText(tabName);
 			
+			parent.getTabs().add(root);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return root;
+		return controller;
 	}
 	
-	public static Tab addNewTableTab(TabPane parent, String tableName, List<Map<String, String>> rows){
-		Tab root = addNewTab(parent, tableName);
+	public static ExportTabController addNewTableTab(TabPane parent, String tableName, List<Map<String, String>> rows){
+		ExportTabController controller = addNewTab(parent, tableName);
+		StackPane contentPane = controller.getContentPane();
 		try {
 			//init Table
-			StackPane contentPane = (StackPane) root.getContent().lookup("#contentPane");
 			TableView<Map<String, String>> table = new TableView<>();
+			table.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 			contentPane.getChildren().add(table);
 			
 			if(!rows.isEmpty()){
@@ -61,25 +66,17 @@ public class ElementFactory {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return root;
+		return controller;
 	}
 	
 	public static void addField(GridPane parent, String name, String value) {
-		try {
-			//load the Tab from fxml file
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/exportTab.fxml"));
-			loader.setRoot(parent);
-			GridPane root = loader.load();
-			parent.addRow(Util.getRowCount(parent), root);
-			
-			//set values
-			//			Label labelValue = (Label) root.lookup("#value");
-			//			Label labelField = (Label) root.lookup("#field");
-			//			labelValue.setText(value);
-			//			labelField.setText(name);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Label labelValue = new Label();
+		Label labelField = new Label();
+		
+		//set values
+		labelValue.setText(value);
+		labelField.setText(name);
+		parent.addRow(Util.getRowCount(parent), labelField, labelValue);
 	}
 	
 	public static void addNewStructureTab(TabPane root, String key, Object value) {
@@ -87,25 +84,26 @@ public class ElementFactory {
 		List<String> fields = new ArrayList<>(structureFields.keySet());
 		Collections.sort(fields);
 		
-		Tab structureTab = ElementFactory.addNewTab(root, key);
+		ExportTabController controller = ElementFactory.addNewTab(root, key);
 		GridPane structurePane = new GridPane();
-		StackPane tabRoot = (StackPane) structureTab.getContent().lookup("#contentPane");
+		structurePane.setHgap(20);
+		StackPane tabRoot = controller.getContentPane();
 		tabRoot.getChildren().add(structurePane);
 		for(String field : fields){
 			ElementFactory.addField(structurePane, field, structureFields.get(field));
 		}
 	}
 	
-	public static Tab addField(TabPane root, Tab fieldsTab, String key, Object value) {
-		if(fieldsTab == null){
-			fieldsTab = ElementFactory.addNewTab(root, "Fields");
-			StackPane tabRoot = (StackPane) fieldsTab.getContent().lookup("#contentPane");
+	public static ExportTabController addField(TabPane root, ExportTabController fieldController, String key, Object value) {
+		if(fieldController == null){
+			ExportTabController controller = ElementFactory.addNewTab(root, "Fields");
+			StackPane tabRoot = controller.getContentPane();
 			GridPane fieldsRoot = new GridPane();
 			fieldsRoot.setId("fieldsPane");
 			tabRoot.getChildren().add(fieldsRoot);
 		}
-		GridPane fieldsRoot = (GridPane) fieldsTab.getContent().lookup("#fieldsPane");
+		GridPane fieldsRoot = (GridPane) fieldController.getContentPane().lookup("#fieldsPane");
 		ElementFactory.addField(fieldsRoot, key, (String) value);
-		return fieldsTab;
+		return fieldController;
 	}
 }

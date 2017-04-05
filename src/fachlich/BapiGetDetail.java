@@ -13,7 +13,14 @@ public class BapiGetDetail extends Bapi {
 	
 	@Override
 	protected Map<String, ParameterType> getExportParameterTypes() {
-		return new HashMap<>();
+		if(exportParameterTypes == null){
+			exportParameterTypes = new HashMap<>();
+			exportParameterTypes.put("MATERIAL_GENERAL_DATA", ParameterType.STRUCTURE);
+			exportParameterTypes.put("RETURN", ParameterType.STRUCTURE);
+			exportParameterTypes.put("MATERIALPLANTDATA", ParameterType.STRUCTURE);
+			exportParameterTypes.put("MATERIALVALUATIONDATA", ParameterType.STRUCTURE);
+		}
+		return exportParameterTypes;
 	}
 	
 }

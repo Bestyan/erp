@@ -1,7 +1,10 @@
 package gui_fx;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 public class Util {
 	public static int getRowCount(GridPane pane) {
@@ -16,5 +19,21 @@ public class Util {
 			}
 		}
 		return numRows;
+	}
+	
+	public static void sizeStage(Stage stage){
+		Rectangle2D screen = Screen.getPrimary().getVisualBounds();
+		if(stage.getHeight() > 800){
+			stage.setMinHeight(800);
+		} else{
+			stage.setMinHeight(stage.getHeight());
+		}
+		if(stage.getWidth() > 600){
+			stage.setMinWidth(600);
+		} else{
+			stage.setMinWidth(stage.getWidth());
+		}
+		stage.setMaxHeight(screen.getMaxY());
+		stage.setMaxWidth(screen.getMaxX());
 	}
 }

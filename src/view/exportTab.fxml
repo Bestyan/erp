@@ -2,10 +2,9 @@
 
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.StackPane?>
 
-    <Tab text="Untitled Tab 1" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<Tab fx:id="exportTab" text="Untitled Tab 1" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
          <content>
             <ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                <content>
