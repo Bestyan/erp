@@ -21,7 +21,7 @@
             <Image url="@SAPBusinessObjects.png" />
          </image>
       </ImageView>
-      <Button fx:id="button_suchen" layoutX="273.0" layoutY="305.0" mnemonicParsing="false" text="Suchen" />
+      <Button fx:id="button_suchen" layoutX="273.0" layoutY="305.0" mnemonicParsing="false" onAction="#click_button_Suchen" text="Suchen" />
       <Label contentDisplay="CENTER" layoutX="71.0" layoutY="148.0" prefHeight="27.0" prefWidth="87.0" text="Plant" />
       <Label contentDisplay="CENTER" layoutX="71.0" layoutY="193.0" prefHeight="27.0" prefWidth="87.0" text="ValuationArea" />
       <Label contentDisplay="CENTER" layoutX="71.0" layoutY="242.0" prefHeight="27.0" prefWidth="87.0" text="ValuationType" />

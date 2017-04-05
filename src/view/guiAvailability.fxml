@@ -20,7 +20,7 @@
             <Label contentDisplay="CENTER" layoutX="79.0" layoutY="115.0" prefHeight="27.0" prefWidth="46.0" text="Plant" />
             <Label contentDisplay="CENTER" layoutX="79.0" layoutY="168.0" prefHeight="34.0" prefWidth="107.0" text="CheckRule" />
             <Label layoutX="79.0" layoutY="233.0" prefHeight="17.0" prefWidth="67.0" text="StgeLoc" />
-            <Button fx:id="button_suchen" layoutX="279.0" layoutY="321.0" mnemonicParsing="false" text="Suchen" />
+            <Button fx:id="button_suchen" layoutX="279.0" layoutY="321.0" mnemonicParsing="false" onAction="#click_button_Suchen" text="Suchen" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="402.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@SAPBusinessObjects.png" />

@@ -80,6 +80,6 @@
       <Label layoutX="283.0" layoutY="286.0" text="OP" />
       <Label layoutX="403.0" layoutY="286.0" prefWidth="26.0" text="DI" />
       <Label layoutX="528.0" layoutY="286.0" prefWidth="26.0" text="DI" />
-      <Button fx:id="button_suchen" layoutX="277.0" layoutY="340.0" mnemonicParsing="false" text="Suchen" />
+      <Button fx:id="button_suchen" layoutX="277.0" layoutY="340.0" mnemonicParsing="false" onAction="#click_button_Suchen" text="Suchen" />
    </children>
 </AnchorPane>

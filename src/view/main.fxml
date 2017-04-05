@@ -10,7 +10,7 @@
 <AnchorPane id="button_availability" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_fx.MainController">
    <children>
       <Button fx:id="button_availability" layoutX="415.0" layoutY="123.0" mnemonicParsing="false" onAction="#click_availability" prefHeight="25.0" prefWidth="172.0" text="Availability" />
-      <Button fx:id="button_getList" layoutX="415.0" layoutY="282.0" mnemonicParsing="false" onAction="#click_getList" prefHeight="25.0" prefWidth="172.0" text="GetList" />
+      <Button fx:id="button_getList" layoutX="415.0" layoutY="282.0" mnemonicParsing="false" onAction="#click_getList" prefHeight="25.0" prefWidth="172.0" text="getList" />
       <Button fx:id="button_getDetail" layoutX="415.0" layoutY="200.0" mnemonicParsing="false" onAction="#click_getDetail" prefHeight="25.0" prefWidth="172.0" text="getDetail" />
       <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" layoutX="-1.0" prefHeight="66.0" prefWidth="600.0" text="RetailMaterial">
          <font>
