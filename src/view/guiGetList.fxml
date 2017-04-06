@@ -29,31 +29,31 @@
       <Label layoutX="13.0" layoutY="286.0" text="DISTRIBUTIONCHANNELSELECTION" />
       <Label layoutX="13.0" layoutY="253.0" prefHeight="17.0" prefWidth="190.0" text="SALESORGANISATIONSELECTION" />
       <TextField fx:id="textfieldMatnrSelection1" layoutX="238.0" layoutY="73.0" prefHeight="25.0" prefWidth="26.0" />
-      <TextField fx:id="textfieldMaterialShortDescSel1" layoutX="238.0" layoutY="107.0" prefHeight="25.0" prefWidth="26.0" />
-      <TextField fx:id="textfieldManufacturePartNumb1" layoutX="303.0" layoutY="144.0" prefHeight="25.0" prefWidth="36.0" />
-      <TextField fx:id="textfieldPlantSelection1" layoutX="238.0" layoutY="180.0" prefHeight="25.0" prefWidth="26.0" />
-      <TextField fx:id="textfieldStorageLocationSelection1" layoutX="238.0" layoutY="213.0" prefHeight="25.0" prefWidth="26.0" />
-      <TextField fx:id="textfieldSalesOrganisationSelection1" layoutX="238.0" layoutY="249.0" prefHeight="25.0" prefWidth="26.0" />
-      <TextField fx:id="textfieldDistributionChannelSelection1" layoutX="238.0" layoutY="282.0" prefHeight="25.0" prefWidth="26.0" />
       <TextField fx:id="textfieldMatnrSelection2" layoutX="303.0" layoutY="73.0" prefHeight="25.0" prefWidth="36.0" />
       <TextField fx:id="textfieldMatnrSelection3" layoutX="427.0" layoutY="73.0" prefHeight="25.0" prefWidth="72.0" />
       <TextField fx:id="textfieldMatnrSelection4" layoutX="600.0" layoutY="73.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldMaterialShortDescSel1" layoutX="238.0" layoutY="107.0" prefHeight="25.0" prefWidth="26.0" />
       <TextField fx:id="textfieldMaterialShortDescSel2" layoutX="303.0" layoutY="107.0" prefHeight="25.0" prefWidth="36.0" />
       <TextField fx:id="textfieldMaterialShortDescSel3" layoutX="427.0" layoutY="107.0" prefHeight="25.0" prefWidth="72.0" />
       <TextField fx:id="textfieldMaterialShortDescSel4" layoutX="600.0" layoutY="107.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldManufacturePartNumb1" layoutX="303.0" layoutY="144.0" prefHeight="25.0" prefWidth="36.0" />
       <TextField fx:id="textfieldManufacturePartNumb2" layoutX="427.0" layoutY="144.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldPlantSelection1" layoutX="238.0" layoutY="180.0" prefHeight="25.0" prefWidth="26.0" />
       <TextField fx:id="textfieldPlantSelection2" layoutX="303.0" layoutY="180.0" prefHeight="25.0" prefWidth="36.0" />
       <TextField fx:id="textfieldPlantSelection3" layoutX="428.0" layoutY="180.0" prefHeight="25.0" prefWidth="72.0" />
       <TextField fx:id="textfieldPlantSelection4" layoutX="600.0" layoutY="180.0" prefHeight="25.0" prefWidth="72.0" />
-      <TextField fx:id="textfieldStorageLocationSelection4" layoutX="600.0" layoutY="213.0" prefHeight="25.0" prefWidth="72.0" />
-      <TextField fx:id="textfieldStorageLocationSelection3" layoutX="427.0" layoutY="213.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldStorageLocationSelection1" layoutX="238.0" layoutY="213.0" prefHeight="25.0" prefWidth="26.0" />
       <TextField fx:id="textfieldStorageLocationSelection2" layoutX="303.0" layoutY="213.0" prefHeight="25.0" prefWidth="36.0" />
-      <TextField fx:id="textfieldSalesOrganisationSelection4" layoutX="600.0" layoutY="249.0" prefHeight="25.0" prefWidth="72.0" />
-      <TextField fx:id="textfieldSalesOrganisationSelection3" layoutX="427.0" layoutY="249.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldStorageLocationSelection3" layoutX="427.0" layoutY="213.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldStorageLocationSelection4" layoutX="600.0" layoutY="213.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldSalesOrganisationSelection1" layoutX="238.0" layoutY="249.0" prefHeight="25.0" prefWidth="26.0" />
       <TextField fx:id="textfieldSalesOrganisationSelection2" layoutX="303.0" layoutY="249.0" prefHeight="25.0" prefWidth="36.0" />
-      <TextField fx:id="textfieldDistributionChannelSelection4" layoutX="600.0" layoutY="282.0" prefHeight="25.0" prefWidth="72.0" />
-      <TextField fx:id="textfieldDistributionChannelSelection3" layoutX="428.0" layoutY="282.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldSalesOrganisationSelection3" layoutX="427.0" layoutY="249.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldSalesOrganisationSelection4" layoutX="600.0" layoutY="249.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldDistributionChannelSelection1" layoutX="238.0" layoutY="282.0" prefHeight="25.0" prefWidth="26.0" />
       <TextField fx:id="textfieldDistributionChannelSelection2" layoutX="303.0" layoutY="282.0" prefHeight="25.0" prefWidth="36.0" />
+      <TextField fx:id="textfieldDistributionChannelSelection3" layoutX="428.0" layoutY="282.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldDistributionChannelSelection4" layoutX="600.0" layoutY="282.0" prefHeight="25.0" prefWidth="72.0" />
       <Label layoutY="370.0" prefHeight="32.0" prefWidth="285.0" text="Bastian Schattenberg, Jan Schönbrunn, Jens Fischer" />
       <Label layoutX="517.0" layoutY="77.0" text="MATNR_HIGH" />
       <Label layoutX="350.0" layoutY="77.0" text="MATNR_LOW" />
