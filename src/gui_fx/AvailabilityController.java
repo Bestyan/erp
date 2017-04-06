@@ -42,19 +42,29 @@ public class AvailabilityController {
 	public void click_button_Suchen() {
 		//RESULTPLANT
 		HashMap<String, Object> inputs = new HashMap<>();
-		inputs.put("PLANT", textfieldPlant.getText());
+		if(checkbox_Plant.isSelected()){
+			inputs.put("PLANT", textfieldPlant.getText());
+		}
 		
 		//MATERIAL
-		inputs.put("MATERIAL", textfieldMaterial.getText());
+		if(checkbox_Material.isSelected()){
+			inputs.put("MATERIAL", textfieldMaterial.getText());
+		}
 		
 		//UNIT
-		inputs.put("UNIT", textfieldUnit.getText());
+		if(checkbox_Unit.isSelected()){
+			inputs.put("UNIT", textfieldUnit.getText());
+		}
 		
 		//CHECKRULE
-		inputs.put("CHECK_RULE", textfieldCheckRule.getText());
+		if(checkbox_CheckRule.isSelected()){
+			inputs.put("CHECK_RULE", textfieldCheckRule.getText());
+		}
 		
 		//STGE_LOC
-		inputs.put("STGE_LOC", textfieldStgeLoc.getText());
+		if(checkbox_StgeLoc.isSelected()){
+			inputs.put("STGE_LOC", textfieldStgeLoc.getText());
+		}
 		
 		SapModel model = SapModel.connect();
 		Map<String, Object> resultAvailability = model.executeBapi(BapiType.AVAILABILITY, inputs);

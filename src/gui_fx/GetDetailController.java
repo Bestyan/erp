@@ -35,21 +35,29 @@ public class GetDetailController {
 	
 	@FXML
 	public void click_button_Suchen() {
-		//MATERIAL
 		HashMap<String, Object> inputs = new HashMap<>();
-		inputs.put("MATERIAL", textfieldMaterial.getText());
+		//MATERIAL
+		if(checkbox_Material.isSelected()){
+			inputs.put("MATERIAL", textfieldMaterial.getText());
+		}
 		
 		//PLANT
-		inputs.put("PLANT", textfieldPlant.getText());
+		if(checkbox_Plant.isSelected()){
+			inputs.put("PLANT", textfieldPlant.getText());
+		}
 		
 		//VALUATIONAREA
-		inputs.put("VALUATIONAREA", textfieldValuationArea.getText());
+		if(checkbox_ValuationArea.isSelected()){
+			inputs.put("VALUATIONAREA", textfieldValuationArea.getText());
+		}
 		
 		//VALUATIONTYPE
-		inputs.put("VALUATIONTYPE", textfieldValuationType.getText());
+		if(checkbox_ValuationType.isSelected()){
+			inputs.put("VALUATIONTYPE", textfieldValuationType.getText());
+		}
 		
 		SapModel model = SapModel.connect();
-		Map<String, Object> resultGetDetail = model.executeBapi(BapiType.GETLIST, inputs);
+		Map<String, Object> resultGetDetail = model.executeBapi(BapiType.GETDETAIL, inputs);
 		ResultController.displayResults(resultGetDetail);
 	}
 }

@@ -41,6 +41,10 @@ public class Utils {
 	}
 	
 	public static String getValue(Object valueObject){
+		if(valueObject == null){
+			return "";
+		}
+		
 		String fieldValue = null;
 		if(valueObject instanceof String){
 			fieldValue = (String) valueObject;

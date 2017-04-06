@@ -20,6 +20,8 @@ import utils.Utils;
 
 @SuppressWarnings("unchecked")
 public class ElementFactory {
+	private static final int HGAP_GRIDPANE = 20;
+	
 	protected static ExportTabController addNewTab(TabPane parent, String tabName){
 		ExportTabController controller = new ExportTabController();
 		try {
@@ -86,7 +88,7 @@ public class ElementFactory {
 		
 		ExportTabController controller = ElementFactory.addNewTab(root, key);
 		GridPane structurePane = new GridPane();
-		structurePane.setHgap(20);
+		structurePane.setHgap(HGAP_GRIDPANE);
 		StackPane tabRoot = controller.getContentPane();
 		tabRoot.getChildren().add(structurePane);
 		for(String field : fields){
@@ -94,16 +96,17 @@ public class ElementFactory {
 		}
 	}
 	
-	public static ExportTabController addField(TabPane root, ExportTabController fieldController, String key, Object value) {
-		if(fieldController == null){
-			ExportTabController controller = ElementFactory.addNewTab(root, "Fields");
+	public static ExportTabController addField(TabPane root, ExportTabController controller, String key, Object value) {
+		if(controller == null){
+			controller = ElementFactory.addNewTab(root, "Fields");
 			StackPane tabRoot = controller.getContentPane();
 			GridPane fieldsRoot = new GridPane();
+			fieldsRoot.setHgap(HGAP_GRIDPANE);
 			fieldsRoot.setId("fieldsPane");
 			tabRoot.getChildren().add(fieldsRoot);
 		}
-		GridPane fieldsRoot = (GridPane) fieldController.getContentPane().lookup("#fieldsPane");
+		GridPane fieldsRoot = (GridPane) controller.getContentPane().lookup("#fieldsPane");
 		ElementFactory.addField(fieldsRoot, key, (String) value);
-		return fieldController;
+		return controller;
 	}
 }

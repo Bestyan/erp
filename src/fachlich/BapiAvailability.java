@@ -22,6 +22,6 @@ public class BapiAvailability extends Bapi {
 			exportParameterTypes.put("WMDVSX", ParameterType.TABLE);
 			exportParameterTypes.put("WMDVEX", ParameterType.TABLE);
 		}
-		return null;
+		return exportParameterTypes;
 	}
 }
