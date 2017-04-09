@@ -153,10 +153,10 @@ public class GetListController {
 		if (checkbox_StorageLocationSelection.isSelected()) {
 			ArrayList<HashMap<String, String>> storageLocationSelect = new ArrayList<>();
 			HashMap<String, String> storageLocationSelectRow = new HashMap<>();
-			storageLocationSelectRow.put("SIGN", textfieldPlantSelection1.getText());
-			storageLocationSelectRow.put("OPTION", textfieldPlantSelection2.getText());
-			storageLocationSelectRow.put("STLOC_LOW", textfieldPlantSelection3.getText());
-			storageLocationSelectRow.put("STLOC_HIGH", textfieldPlantSelection4.getText());
+			storageLocationSelectRow.put("SIGN", textfieldStorageLocationSelection1.getText());
+			storageLocationSelectRow.put("OPTION", textfieldStorageLocationSelection2.getText());
+			storageLocationSelectRow.put("STLOC_LOW", textfieldStorageLocationSelection3.getText());
+			storageLocationSelectRow.put("STLOC_HIGH", textfieldStorageLocationSelection4.getText());
 			
 			storageLocationSelect.add(storageLocationSelectRow);
 			inputs.put("STORAGELOCATIONSELECT", storageLocationSelect);
