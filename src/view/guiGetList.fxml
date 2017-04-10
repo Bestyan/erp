@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
@@ -9,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_fx.GetListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui_fx.GetListController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="525.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -32,9 +37,9 @@
       <TextField fx:id="textfieldMatnrSelection2" layoutX="303.0" layoutY="73.0" prefHeight="25.0" prefWidth="36.0" promptText="CP" />
       <TextField fx:id="textfieldMatnrSelection3" layoutX="427.0" layoutY="73.0" prefHeight="25.0" prefWidth="72.0" promptText="ERPKÖ*" />
       <TextField fx:id="textfieldMatnrSelection4" layoutX="600.0" layoutY="73.0" prefHeight="25.0" prefWidth="72.0" />
-      <TextField fx:id="textfieldMaterialShortDescSel1" layoutX="238.0" layoutY="107.0" prefHeight="25.0" prefWidth="26.0" />
-      <TextField fx:id="textfieldMaterialShortDescSel2" layoutX="303.0" layoutY="107.0" prefHeight="25.0" prefWidth="36.0" />
-      <TextField fx:id="textfieldMaterialShortDescSel3" layoutX="427.0" layoutY="107.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldMaterialShortDescSel1" layoutX="238.0" layoutY="107.0" prefHeight="25.0" prefWidth="26.0" promptText="I" />
+      <TextField fx:id="textfieldMaterialShortDescSel2" layoutX="303.0" layoutY="107.0" prefHeight="25.0" prefWidth="36.0" promptText="CP" />
+      <TextField fx:id="textfieldMaterialShortDescSel3" layoutX="427.0" layoutY="107.0" prefHeight="25.0" prefWidth="72.0" promptText="*Ravioli*" />
       <TextField fx:id="textfieldMaterialShortDescSel4" layoutX="600.0" layoutY="107.0" prefHeight="25.0" prefWidth="72.0" />
       <TextField fx:id="textfieldManufacturePartNumb1" layoutX="303.0" layoutY="144.0" prefHeight="25.0" prefWidth="36.0" />
       <TextField fx:id="textfieldManufacturePartNumb2" layoutX="427.0" layoutY="144.0" prefHeight="25.0" prefWidth="72.0" />
@@ -42,17 +47,17 @@
       <TextField fx:id="textfieldPlantSelection2" layoutX="303.0" layoutY="180.0" prefHeight="25.0" prefWidth="36.0" promptText="BT" />
       <TextField fx:id="textfieldPlantSelection3" layoutX="428.0" layoutY="180.0" prefHeight="25.0" prefWidth="72.0" promptText="1200" />
       <TextField fx:id="textfieldPlantSelection4" layoutX="600.0" layoutY="180.0" prefHeight="25.0" prefWidth="72.0" promptText="1500" />
-      <TextField fx:id="textfieldStorageLocationSelection1" layoutX="238.0" layoutY="213.0" prefHeight="25.0" prefWidth="26.0" />
-      <TextField fx:id="textfieldStorageLocationSelection2" layoutX="303.0" layoutY="213.0" prefHeight="25.0" prefWidth="36.0" />
-      <TextField fx:id="textfieldStorageLocationSelection3" layoutX="427.0" layoutY="213.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldStorageLocationSelection1" layoutX="238.0" layoutY="213.0" prefHeight="25.0" prefWidth="26.0" promptText="I" />
+      <TextField fx:id="textfieldStorageLocationSelection2" layoutX="303.0" layoutY="213.0" prefHeight="25.0" prefWidth="36.0" promptText="EQ" />
+      <TextField fx:id="textfieldStorageLocationSelection3" layoutX="427.0" layoutY="213.0" prefHeight="25.0" prefWidth="72.0" promptText="0088" />
       <TextField fx:id="textfieldStorageLocationSelection4" layoutX="600.0" layoutY="213.0" prefHeight="25.0" prefWidth="72.0" />
-      <TextField fx:id="textfieldSalesOrganisationSelection1" layoutX="238.0" layoutY="249.0" prefHeight="25.0" prefWidth="26.0" />
-      <TextField fx:id="textfieldSalesOrganisationSelection2" layoutX="303.0" layoutY="249.0" prefHeight="25.0" prefWidth="36.0" />
-      <TextField fx:id="textfieldSalesOrganisationSelection3" layoutX="427.0" layoutY="249.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldSalesOrganisationSelection1" layoutX="238.0" layoutY="249.0" prefHeight="25.0" prefWidth="26.0" promptText="I" />
+      <TextField fx:id="textfieldSalesOrganisationSelection2" layoutX="303.0" layoutY="249.0" prefHeight="25.0" prefWidth="36.0" promptText="EQ" />
+      <TextField fx:id="textfieldSalesOrganisationSelection3" layoutX="427.0" layoutY="249.0" prefHeight="25.0" prefWidth="72.0" promptText="0001" />
       <TextField fx:id="textfieldSalesOrganisationSelection4" layoutX="600.0" layoutY="249.0" prefHeight="25.0" prefWidth="72.0" />
-      <TextField fx:id="textfieldDistributionChannelSelection1" layoutX="238.0" layoutY="282.0" prefHeight="25.0" prefWidth="26.0" />
-      <TextField fx:id="textfieldDistributionChannelSelection2" layoutX="303.0" layoutY="282.0" prefHeight="25.0" prefWidth="36.0" />
-      <TextField fx:id="textfieldDistributionChannelSelection3" layoutX="428.0" layoutY="282.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="textfieldDistributionChannelSelection1" layoutX="238.0" layoutY="282.0" prefHeight="25.0" prefWidth="26.0" promptText="I" />
+      <TextField fx:id="textfieldDistributionChannelSelection2" layoutX="303.0" layoutY="282.0" prefHeight="25.0" prefWidth="36.0" promptText="EQ" />
+      <TextField fx:id="textfieldDistributionChannelSelection3" layoutX="428.0" layoutY="282.0" prefHeight="25.0" prefWidth="72.0" promptText="01" />
       <TextField fx:id="textfieldDistributionChannelSelection4" layoutX="600.0" layoutY="282.0" prefHeight="25.0" prefWidth="72.0" />
       <Label layoutY="370.0" prefHeight="32.0" prefWidth="285.0" text="Bastian Schattenberg, Jan Schönbrunn, Jens Fischer" />
       <Label layoutX="517.0" layoutY="77.0" text="MATNR_HIGH" />

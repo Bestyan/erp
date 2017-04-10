@@ -4,16 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.sap.mw.jco.JCO;
-import com.sap.mw.jco.JCO.Client;
-import com.sap.mw.jco.JCO.Function;
-import com.sap.mw.jco.JCO.ParameterList;
-import com.sap.mw.jco.JCO.Repository;
+import com.sap.mw.jco.JCO.*;
 
 import fachlich.BapiFactory.BapiType;
 
 public class SapModel {
 	
-	private static final String SERVER = "/H/saprouter.hcc.in.tum.de/S/3299/H/i28lp1";
+	private static final String SERVER = "/H/saprouter.hcc.in.tum.de/S/3297/H/i28lp1";
 	private static final String LANGUAGE = "DE";
 	private static final String SYSTEM_NUMBER = "28";
 	
@@ -27,7 +24,7 @@ public class SapModel {
 		this.getConnection().disconnect();
 	}
 	
-	public SapModel(String mandant, String user, String password) {
+	protected SapModel(String mandant, String user, String password) {
 		super();
 		this.connect(mandant, user, password, LANGUAGE, SERVER, SYSTEM_NUMBER);
 	}

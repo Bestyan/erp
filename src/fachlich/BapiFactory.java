@@ -6,14 +6,12 @@ import java.util.Map;
 import com.sap.mw.jco.IFunctionTemplate;
 import com.sap.mw.jco.JCO.Repository;
 
-public class BapiFactory {
+public abstract class BapiFactory {
 	public static enum BapiType{
 		AVAILABILITY, GETDETAIL, GETLIST
 	}
 	
 	private static Repository repository;
-	
-	
 	
 	private static Map<BapiType, String> nameMappings;
 	private static Map<BapiType, String> getMappings(){
@@ -81,11 +79,6 @@ public class BapiFactory {
 			nameMappings.put(BapiType.GETLIST, "BAPI_MATERIAL_GETLIST");
 		}
 		return nameMappings;
-	}
-	
-	public BapiFactory(Repository repository){
-		super();
-		setRepository(repository);
 	}
 	
 	public static Repository getRepository() {
