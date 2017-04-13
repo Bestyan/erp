@@ -24,7 +24,7 @@
       <Label contentDisplay="CENTER" layoutX="71.0" layoutY="106.0" prefHeight="27.0" prefWidth="87.0" text="Material" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="393.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@SAPBusinessObjects.png" />
+            <Image url="@view/SAPBusinessObjects.png" />
          </image>
       </ImageView>
       <Button fx:id="button_suchen" layoutX="273.0" layoutY="305.0" mnemonicParsing="false" onAction="#click_button_Suchen" text="Suchen" />

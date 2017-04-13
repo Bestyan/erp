@@ -29,7 +29,7 @@
             <Button fx:id="button_suchen" layoutX="279.0" layoutY="321.0" mnemonicParsing="false" onAction="#click_button_Suchen" text="Suchen" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="402.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@SAPBusinessObjects.png" />
+                  <Image url="@view/SAPBusinessObjects.png" />
                </image>
             </ImageView>
             <TextField fx:id="textfieldPlant" layoutX="232.0" layoutY="116.0" promptText="1400" />
